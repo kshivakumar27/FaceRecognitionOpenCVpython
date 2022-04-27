@@ -1,2 +1,10 @@
-# FaceRecognitionOpenCVpython
-Face recognition mini project 2019
+# Facial-Recognition
+
+Face detection using Haar cascades is a machine learning based approach where a cascade function is trained with a set of input data. OpenCV already contains many pre-trained classifiers for face, eyes, smiles, etc..
+Here we will work with face detection. Initially, the algorithm needs a lot of positive images (images of faces) and negative images (images without faces) to train the classifier. Then we need to extract features from it. For this, Haar features shown in the below image are used. They are just like our convolutional kernel. Each feature is a single value obtained by subtracting sum of pixels under the white rectangle from sum of pixels under the black rectangle.
+
+![image](https://user-images.githubusercontent.com/52034745/87960088-7352c000-cad1-11ea-9d3c-4202a99a3d27.png)
+
+
+You need to download the trained classifier XML file (haarcascade_frontalface_default.xml), which is available in OpenCv’s GitHub repository. Save it to your working location.
+The detection works only on grayscale images. So it is important to convert the color image to grayscale. detectMultiScale function is used to detect the faces. It takes 3 arguments — the input image, scaleFactor and minNeighbours. scaleFactor specifies how much the image size is reduced with each scale. minNeighbours specifies how many neighbors each candidate rectangle should have to retain it.faces contains a list of coordinates for the rectangular regions where faces were found. We use these coordinates to draw the rectangles in our image.Similarly, we can detect faces in videos. As you know videos are basically made up of frames, which are still images. So we perform the face detection for each frame in a video.The only difference here is that we use an infinite loop to loop through each frame in the video. We use cap.read() to read each frame. The first value returned is a flag that indicates if the frame was read correctly or not. We don’t need it. The second value returned is the still frame on which we will be performing the detection.
