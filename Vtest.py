@@ -38,6 +38,9 @@ while True:
         if confidence < 39:#If confidence less than 37 then don't print predicted face text on screen
            fr.put_text(test_img,predicted_name,x,y)
 
+        
+        
+        
 
     resized_img = cv2.resize(test_img, (1000, 700))
     cv2.imshow('face recognition ',resized_img)
